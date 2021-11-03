@@ -1,0 +1,19 @@
+.footer-box {
+  height: 150px;
+  background-color: #2a3b8f;
+  border-radius: 25px 25px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ul.footer-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+}
+ul.footer-list li a {
+  color: #fff;
+  margin-right: 30px;
+  text-transform: capitalize;
+}
