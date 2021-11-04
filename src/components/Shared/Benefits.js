@@ -1,4 +1,8 @@
 import { Grid } from '@material-ui/core';
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import Modal from "@material-ui/core/Modal";
+import { makeStyles } from "@material-ui/core/styles";
 import AirplayIcon from "@material-ui/icons/Airplay";
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
@@ -6,25 +10,38 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import SpaIcon from "@material-ui/icons/Spa";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import WifiTetheringIcon from "@material-ui/icons/WifiTethering";
-import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 import { Link } from "react-router-dom";
 import CustomButton from "./CustomButton";
+import InputField from './InputField';
 import RadioButton from './RadioButton';
 
-const useStyles = makeStyles({
-	root: {
-		display: "flex",
-		justifyContent: "space-between",
-		alignItems: "center"
-	},
-	button: {
-		display: "flex",
-		justifyContent: "end",
-		alignItems: "center"
-	},
-
-});
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  button: {
+    display: "flex",
+    justifyContent: "end",
+    alignItems: "center",
+  },
+  link: {
+    color: "#F15A29",
+  },
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
 const list = [
   {
     icon: WifiTetheringIcon,
@@ -85,15 +102,54 @@ const Benefits = () => {
 		marginLeft: "10px",
   };
 	const classes = useStyles();
+
+	const [open, setOpen] = React.useState(false);
+
+	const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 	return (
     <>
       <Grid container direction="row" spacing={3}>
         <Grid item xs={12} className={classes.root}>
-          <Link>Benefits</Link>
-          <CustomButton style={benefitBtn} text="Add Benefits" />
+          <Link className={classes.link} to="/benefit">
+            Benefits
+          </Link>
+          <CustomButton
+            handleOpen={() => {
+              handleOpen();
+            }}
+            style={benefitBtn}
+            text="Add Benefits"
+          />
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            className={classes.modal}
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <Fade in={open}>
+              <div className={classes.paper}>
+                <h2 id="transition-modal-title">Modal</h2>
+                <InputField placeholder="name" />
+                <InputField placeholder="field" />
+                <button onClick={handleClose}>Close</button>
+              </div>
+            </Fade>
+          </Modal>
         </Grid>
         {list.map((item) => (
-          <Grid key={item.id} item xs={4}>
+          <Grid key={item.id} item xs={12} sm={6} md={4}>
             <RadioButton data={item} />
           </Grid>
         ))}

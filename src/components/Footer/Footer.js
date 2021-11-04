@@ -4,31 +4,36 @@ import './Footer.css';
 const list = [
   {
     name: "about company",
-    link: "/about",
+		link: "/about",
+		id:1
   },
   {
     name: "privacy policy",
-    link: "/privacy",
+		link: "/privacy",
+		id: 2
   },
   {
     name: "terms & conditions",
-    link: "/terms",
+		link: "/terms",
+		id: 3
   },
   {
     name: "blog",
-    link: "/blog",
+		link: "/blog",
+		id: 4
   },
   {
     name: "contacts",
-    link: "/contact",
+		link: "/contact",
+		id: 5
   },
 ];
 const Footer = () => {
 	return (
     <div className="footer-box">
       <ul className="footer-list">
-        {list.map(({ name, link }) => (
-          <li>
+        {list.map(({ name, link ,id}) => (
+          <li key={id}>
             <Link to={link}>{name}</Link>
           </li>
         ))}

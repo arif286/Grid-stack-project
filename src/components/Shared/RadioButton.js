@@ -6,34 +6,58 @@ import React, { useState } from 'react';
 const useStyles = makeStyles({
   root: {
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
     height: "45px",
     background: "white",
     outline: "none",
     border: "1px solid #C6C6C6",
-		borderRadius: "32px",
-		cursor: "pointer",
+    borderRadius: "32px",
+    cursor: "pointer",
   },
-  home: {
-    color: "#C6C6C6",
+  icon: {
+    color: "#8A7D76",
+    marginRight: "15px",
+  },
+  iconColor: {
+    color: "#FFFFFF",
+    marginRight: "15px",
+  },
+  iconText: {
+    display: "flex",
+    alignItems: "center",
+  },
+  active: {
+    backgroundColor: "#F77631",
+    color: "#FFFFFF",
   },
 });
 
 const RadioButton = ({data:{icon:Icon, text}}) => {
-	console.log(text);
 	const [changeIcon, setChangeIcon] = useState(false);
+	const [update,setUpdate] = useState('');
 	const classes = useStyles();
+	const handleButton = () => {
+		setChangeIcon(true)
+		setUpdate('active')
+	}
 	return (
     <>
-      <button className={classes.root}>
-				<Icon/>
-        {text}
+      <button
+        onClick={() => handleButton()}
+        className={`${classes.root} ${update ? classes.active : ""}`}
+      >
+        <div className={classes.iconText}>
+          <Icon className={update ? classes.iconColor : classes.icon} />
+          {text}
+        </div>
         {!changeIcon ? (
-          <RadioButtonUncheckedIcon className={classes.home} />
+          <RadioButtonUncheckedIcon className={classes.icon} />
         ) : (
-          <CheckCircleIcon />
+          <CheckCircleIcon
+            className={update ? classes.iconColor : classes.icon}
+          />
         )}
       </button>
     </>

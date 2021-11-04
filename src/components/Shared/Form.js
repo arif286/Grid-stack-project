@@ -40,7 +40,7 @@ const Form = () => {
             placeholder="Type in your Summery"
           ></textarea>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6} md={6}>
           <label>Website</label>
           <InputField placeholder="Website (Url)" />
           <label>Company Size*</label>
@@ -48,7 +48,7 @@ const Form = () => {
           <label>Type</label>
           <InputField placeholder="Enter text" />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6} md={6}>
           <label>Industry*</label>
           <SelectField option={option} />
           <label>Headquarters</label>
@@ -60,14 +60,6 @@ const Form = () => {
           <label>Specialties</label>
           <InputField placeholder="Enter text" />
         </Grid>
-        {/* <CardActions>
-          <Button size="small" color="primary">
-            Skip
-          </Button>
-          <Button size="small" color="primary">
-            Save
-          </Button>
-        </CardActions> */}
       </Grid>
     </>
   );

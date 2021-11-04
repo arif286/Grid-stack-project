@@ -21,7 +21,7 @@ const SelectField = ({ option }) => {
 		<select className={classes.root}>
 			<option>Select Industry</option>
       {option.map((option) => (
-				<option value={option}>{option}</option>
+				<option key={option} value={option}>{option}</option>
       ))}
     </select>
   );
