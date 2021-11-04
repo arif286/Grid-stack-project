@@ -1,6 +1,4 @@
 import { makeStyles } from '@material-ui/core';
-import Button from "@material-ui/core/Button";
-import CardActions from "@material-ui/core/CardActions";
 import Grid from "@material-ui/core/Grid";
 import React from 'react';
 import InputField from "../Shared/InputField";
@@ -62,14 +60,14 @@ const Form = () => {
           <label>Specialties</label>
           <InputField placeholder="Enter text" />
         </Grid>
-        <CardActions>
+        {/* <CardActions>
           <Button size="small" color="primary">
             Skip
           </Button>
           <Button size="small" color="primary">
             Save
           </Button>
-        </CardActions>
+        </CardActions> */}
       </Grid>
     </>
   );

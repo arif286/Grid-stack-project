@@ -35,16 +35,16 @@ const Header = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar className={classes.header}>
-          <Typography className={classes.title} variant="p">
+          <Typography className={classes.title} variant="subtitle1">
             Company
           </Typography>
-          <Typography className={classes.title} variant="p">
+          <Typography className={classes.title} variant="subtitle1">
             Find Candidate
           </Typography>
-          <Typography className={classes.title} variant="p">
+          <Typography className={classes.title} variant="subtitle1">
             Guide
           </Typography>
-          <Typography className={classes.title} variant="p">
+          <Typography className={classes.title} variant="subtitle1">
             |
           </Typography>
           <div className={classes.person}>

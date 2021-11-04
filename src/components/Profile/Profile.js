@@ -4,6 +4,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import banner from "../../assets/images/banner.png";
+import Benefits from "../Shared/Benefits";
 import Form from "../Shared/Form";
 
 // import profile from "../../assets/images/profile.png";
@@ -53,7 +54,7 @@ const Profile = () => {
       />
       <div className={classes.padding}>
 				<Form />
-
+				<Benefits/>
       </div>
     </Card>
   );
