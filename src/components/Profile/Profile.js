@@ -1,13 +1,13 @@
-import Button from "@material-ui/core/Button";
+
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardMedia from "@material-ui/core/CardMedia";
-import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import banner from "../../assets/images/banner.png";
+import Form from "../Shared/Form";
+
 // import profile from "../../assets/images/profile.png";
-import InputField from "../Shared/InputField";
+
 
 const useStyles = makeStyles({
   root: {
@@ -52,46 +52,8 @@ const Profile = () => {
         title="Contemplative Reptile"
       />
       <div className={classes.padding}>
-        <Grid container direction="row" spacing={3}>
-          <Grid item xs={12}>
-            <label className={classes.label} htmlFor="about">
-              About Company*
-            </label>
-            <textarea
-              className={classes.area}
-              name="about"
-              placeholder="Type in your Summery"
-            ></textarea>
-          </Grid>
-          <Grid item xs={6}>
-            <label>Website</label>
-            <InputField placeholder="Website (Url)" />
-            <label>Company Size*</label>
-            <InputField placeholder="Employees" />
-            <label>Type</label>
-            <InputField placeholder="Enter text" />
-          </Grid>
-          <Grid item xs={6}>
-            <label>Industry*</label>
-            <InputField placeholder="Select Industry" />
-            <label>Headquarters</label>
-            <InputField placeholder="Enter text" />
-            <label>Founded</label>
-            <InputField placeholder="Enter text" />
-          </Grid>
-					<Grid item xs={12}>
-						<label>Specialties</label>
-            <InputField placeholder="Enter text" />
-					</Grid>
-          <CardActions>
-            <Button size="small" color="primary">
-              Skip
-            </Button>
-            <Button size="small" color="primary">
-              Save
-            </Button>
-          </CardActions>
-        </Grid>
+				<Form />
+
       </div>
     </Card>
   );

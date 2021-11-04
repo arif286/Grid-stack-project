@@ -9,6 +9,8 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #B3B3B3",
     width: "100%",
 		paddingLeft: "12px",
+		marginTop: "15px",
+    marginBottom: "15px"
   },
 }));
 
