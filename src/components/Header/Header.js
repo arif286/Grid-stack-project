@@ -1,22 +1,35 @@
-import AppBar from "@material-ui/core/AppBar";
-import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+import {
+	AppBar, CssBaseline, makeStyles, Toolbar, useMediaQuery, useTheme
+} from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
 import React from "react";
+import { Link } from "react-router-dom";
+import DrawerComponent from "./DrawerComponent";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
+  navlinks: {
+    marginLeft: theme.spacing(1),
+    display: "flex",
+  },
+  logo: {
+    flexGrow: "1",
+    cursor: "pointer",
+  },
+  link: {
+    textDecoration: "none",
+    color: "#000",
+    fontSize: "16px",
+    marginRight: theme.spacing(2),
+    "&:hover": {
+      color: "grey",
+      borderBottom: "1px solid white",
+    },
   },
   header: {
     justifyContent: "end",
     backgroundColor: "white",
-		color: "#666666",
-		height: "90px",
-  },
-  title: {
-    marginRight: "25px",
+    color: "#000",
+    height: "90px",
   },
   person: {
     display: "flex",
@@ -28,33 +41,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = () => {
+function Header() {
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar className={classes.header}>
-          <Typography className={classes.title} variant="subtitle1">
-            Company
-          </Typography>
-          <Typography className={classes.title} variant="subtitle1">
-            Find Candidate
-          </Typography>
-          <Typography className={classes.title} variant="subtitle1">
-            Guide
-          </Typography>
-          <Typography className={classes.title} variant="subtitle1">
-            |
-          </Typography>
-          <div className={classes.person}>
-            <PersonIcon style={{ color: "black" }} />
-            <span className={classes.textColor}>Hi, Elise!</span>
+    <AppBar position="static">
+      <CssBaseline />
+      <Toolbar className={classes.header}>
+        {isMobile ? (
+          <DrawerComponent />
+        ) : (
+          <div className={classes.navlinks}>
+            <Link to="/" className={classes.link}>
+              Company
+            </Link>
+            <Link to="/about" className={classes.link}>
+              Find Candidate
+            </Link>
+            <Link to="/contact" className={classes.link}>
+              Guide
+            </Link>
+            <div className={classes.person}>
+              <PersonIcon style={{ color: "black" }} />
+              <span className={classes.textColor}>Hi, Elise!</span>
+            </div>
           </div>
-        </Toolbar>
-      </AppBar>
-    </div>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 }
-
 export default Header;
